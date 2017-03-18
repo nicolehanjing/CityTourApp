@@ -26,7 +26,7 @@ public class WeatherOpenHelper extends SQLiteOpenHelper {
             + "province_id integer)";
     /**
      * County表建表语句 */
-    public static final String CREATE_COUNTRY = "create table County ("
+    public static final String CREATE_COUNTY = "create table County ("
             + "id integer primary key autoincrement, "
             + "county_name text, "
             + "county_code text, "
@@ -40,7 +40,7 @@ public class WeatherOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PROVINCE); // 创建Province表
         db.execSQL(CREATE_CITY); // 创建City表
-        db.execSQL(CREATE_COUNTRY); // 创建County表
+        db.execSQL(CREATE_COUNTY); // 创建County表
 
     }
 

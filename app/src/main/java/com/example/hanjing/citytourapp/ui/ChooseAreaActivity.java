@@ -2,7 +2,10 @@ package com.example.hanjing.citytourapp.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -15,10 +18,10 @@ import android.widget.Toast;
 
 import com.example.hanjing.citytourapp.R;
 import com.example.hanjing.citytourapp.db.WeatherDB;
-import com.example.hanjing.citytourapp.util.HttpCallbackListener;
 import com.example.hanjing.citytourapp.model.City;
-import com.example.hanjing.citytourapp.model.Country;
+import com.example.hanjing.citytourapp.model.County;
 import com.example.hanjing.citytourapp.model.Province;
+import com.example.hanjing.citytourapp.util.HttpCallbackListener;
 import com.example.hanjing.citytourapp.util.Utility;
 import com.example.hanjing.citytourapp.util.weatherHttpUtil;
 
@@ -52,7 +55,7 @@ public class ChooseAreaActivity extends Activity {
     /**
      * 县列表
      */
-    private List<Country> countryList;
+    private List<County> countyList;
     /**
      * 选中的省份
      */
@@ -70,6 +73,15 @@ public class ChooseAreaActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (prefs.getBoolean("city_selected", false)) {
+            Intent intent = new Intent(this, WeatherActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.choose_area);
 
@@ -80,6 +92,7 @@ public class ChooseAreaActivity extends Activity {
         listView.setAdapter(adapter);
 
         WeatherDB = WeatherDB.getInstance(this);//数据库实例
+
 
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -94,8 +107,17 @@ public class ChooseAreaActivity extends Activity {
                     selectedCity = cityList.get(index);
                     queryCounties();
                 }
-            } });
-        queryProvinces(); // 加载省级数据
+
+                else if (currentLevel == LEVEL_COUNTY) {
+                    String countyCode = countyList.get(index).getCountyCode();
+                    Intent intent = new Intent(ChooseAreaActivity.this, WeatherActivity.class);
+                    intent.putExtra("county_code", countyCode);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+                 queryProvinces(); // 加载省级数据
         }
 
 
@@ -134,18 +156,18 @@ public class ChooseAreaActivity extends Activity {
     /**
      * 查询选中市内所有的县，优先从数据库查询，如果没有查询到再去服务器上查询。 */
     private void queryCounties() {
-        countryList = WeatherDB.loadCounties(selectedCity.getId());
-        if (countryList.size() > 0) {
+        countyList = WeatherDB.loadCounties(selectedCity.getId());
+        if (countyList.size() > 0) {
             dataList.clear();
-            for (Country county : countryList) {
-                dataList.add(county.getCountryName());
+            for (County county : countyList) {
+                dataList.add(county.getCountyName());
             }
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
             titleText.setText(selectedCity.getCityName());
             currentLevel = LEVEL_COUNTY;
         } else {
-            queryFromServer(selectedCity.getCityCode(), "county");
+            queryFromServer(selectedCity.getCityCode(), "country");
         } }
       /**
        * 根据传入的代号和类型从服务器上查询省市县数据。
@@ -171,7 +193,7 @@ public class ChooseAreaActivity extends Activity {
             } else if ("city".equals(type)) {
                 result = Utility.handleCitiesResponse(WeatherDB,
                         response, selectedProvince.getId());
-            } else if ("county".equals(type)) {
+            } else if ("country".equals(type)) {
                 result = Utility.handleCountiesResponse(WeatherDB, response, selectedCity.getId());
             }
             if (result) {
@@ -184,7 +206,7 @@ public class ChooseAreaActivity extends Activity {
                         queryProvinces();
                     } else if ("city".equals(type)) {
                         queryCities();
-                    } else if ("county".equals(type)) {
+                    } else if ("country".equals(type)) {
                         queryCounties();
                     }
                 } });
