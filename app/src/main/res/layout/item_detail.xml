@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+     <TextView 
+       android:id="@+id/re_status_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="状态：进行中"
+       android:textColor="@color/darkorange"
+       android:textSize="13sp"
+       android:padding="2dp" />
+      <TextView 
+       android:id="@+id/re_time_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Time：12:12"
+       android:textColor="@color/black"
+       android:textSize="13sp"
+       android:padding="2dp"
+        />
+       <TextView 
+       android:id="@+id/re_start_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="起始位置：上地地铁站"
+       android:textColor="@color/black"
+       android:textSize="13sp"
+       android:padding="2dp"
+        />
+        <TextView 
+       android:id="@+id/re_end_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="结束位置：望京地铁站"
+       android:textColor="@color/black"
+       android:textSize="13sp"
+       android:padding="2dp"
+        />
+</LinearLayout>

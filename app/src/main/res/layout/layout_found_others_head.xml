@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/icon_others_head_grey_img"
+    android:orientation="vertical" >
+    
+    
+     <ImageView
+        android:id="@+id/need_help_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:src="@drawable/img_sms_count_bg" />
+    
+    <TextView 
+        android:id="@+id/nickname_tv"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="奶奶"
+        android:gravity="center"
+        android:lines="2"
+        android:textColor="@color/black"
+        android:layout_centerInParent="true"
+        />
+    
+    
+
+</RelativeLayout>

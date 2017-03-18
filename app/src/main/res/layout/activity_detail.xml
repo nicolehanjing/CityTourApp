@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/orange"
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Order Detail"
+            android:textColor="#FFFFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+      
+    </RelativeLayout>
+  <LinearLayout 
+        android:id="@+id/add_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+    
+         <TextView 
+       android:id="@+id/re_status_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="状态：进行中"
+       android:textColor="@color/grey"
+       android:textSize="13sp"
+       android:padding="2dp"
+        />
+      <TextView 
+       android:id="@+id/re_time_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="时间：12:12"
+       android:textColor="@color/black"
+       android:textSize="13sp"
+       android:padding="2dp"
+        />
+       <TextView 
+       android:id="@+id/re_start_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="起始位置：上地地铁站"
+       android:textColor="@color/black"
+       android:textSize="13sp"
+       android:padding="2dp"
+        />
+        <TextView 
+       android:id="@+id/re_end_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="结束位置：望京地铁站"
+       android:textColor="@color/black"
+       android:textSize="13sp"
+       android:padding="2dp"
+        />
+      <TextView 
+       android:id="@+id/re_money_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="价格：20元"
+       android:textColor="@color/red"
+       android:textSize="13sp"
+       android:padding="2dp" />
+
+      <Button
+            android:id="@+id/bx_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/startbutton"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:layout_marginTop="10dp"
+            android:text="提交" />
+     </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.hanjing.citytourapp.ui.ActivityLogin"
+    android:background="#fdf9f0">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:id="@+id/logo"
+        android:src="@drawable/logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/radioGroup"
+        android:layout_alignEnd="@+id/radioGroup"
+        android:paddingRight="7dp"
+        android:paddingLeft="7dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GET STARTED!"
+        android:id="@+id/startButton"
+        android:textColor="#fdf9f0"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:background="@drawable/startbutton"
+        android:layout_marginTop="10dp"
+        android:onClick="getStarted"
+        android:layout_below="@+id/rememberContainer"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/registbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="register?"
+        android:padding="15dp"
+        android:layout_below="@id/startButton"
+        android:textColor="@color/brown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your mobile phone:"
+        android:id="@+id/enterView"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:textSize="20sp"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/mobileInput"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/enterView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your password:"
+        android:id="@+id/passwordView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:layout_below="@id/mobileInput"
+        android:textSize="20sp"
+        android:textColor="#000000" />
+
+    <LinearLayout
+        android:id="@+id/passwordContainer"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_below="@+id/passwordView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+        <ImageView
+            android:id="@+id/eye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/eye"
+            android:layout_marginRight="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rememberContainer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/passwordContainer"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:gravity="center">
+    <CheckBox
+        android:id="@+id/remember_pass"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me"
+            android:layout_gravity="center"/>
+     </LinearLayout>
+
+</RelativeLayout>

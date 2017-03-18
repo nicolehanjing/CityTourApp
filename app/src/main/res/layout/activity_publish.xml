@@ -1,0 +1,266 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textAlignment="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/orange"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"/>
+
+        <TextView
+            android:id="@+id/jy_title_tv"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Create a trip"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/telephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/telephone"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/add_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/border"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/vertical_padding"
+            android:paddingLeft="@dimen/horizontal_padding"
+            android:paddingTop="@dimen/vertical_padding" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/departure" />
+
+
+            <TextView
+                android:id="@+id/from_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="From"
+                android:textSize="20dp" />
+            </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/endloc_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:id="@+id/time_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/border"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/vertical_padding"
+            android:paddingLeft="@dimen/horizontal_padding"
+            android:paddingTop="@dimen/vertical_padding">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/time" />
+
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="date"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/time"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="time"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/number_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/border"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/vertical_padding"
+            android:paddingLeft="@dimen/horizontal_padding"
+            android:paddingTop="@dimen/vertical_padding">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/people" />
+
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Number of People"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        />
+
+        <LinearLayout
+            android:id="@+id/priority_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/border"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/vertical_padding"
+            android:paddingLeft="@dimen/horizontal_padding"
+            android:paddingTop="@dimen/vertical_padding">
+
+            <TextView
+            android:id="@+id/request_p_et"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:text="Priority" />
+
+            <Button
+                android:id="@+id/btn_sub"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="-"
+                android:layout_marginLeft="20dp"
+                android:textColor="@android:color/black"
+                android:textSize="25sp"
+                android:background="@drawable/button_selector"/>
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:id="@+id/priority"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@android:color/black"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/request_money_et"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="40dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="12dp"
+                android:gravity="center_vertical"
+                android:text="Cost：unknown"
+                android:textSize="10sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/border">
+            <Button
+                android:id="@+id/add_end_bt"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/acceptrequest_button"
+                android:textColor="@color/white"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center"
+                android:text="添加目的" />
+            <Button
+                android:id="@+id/clear_end_bt"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/acceptrequest_button"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:text="清空目的" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/acceptrequest_button"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:text="提交" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/request_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/list_item_selector" />
+
+</LinearLayout>

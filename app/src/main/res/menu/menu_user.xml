@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/profile"
+        android:title="profile"/>
+    <item
+        android:id="@+id/search"
+        android:title="contact"/>
+    <item
+        android:id="@+id/food"
+        android:title="food"/>
+    <item
+        android:id="@+id/shopping"
+        android:title="shopping"/>
+
+</menu>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CityTourApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="car_use_title">I WANT A CAR</string>
+    <string name="destination_button">enter destination</string>
+    <string name="cancel_button">CANCEL</string>
+    <string name="destination_title">enter destination</string>
+    <string name="title_activity_number_picker">numberPicker</string>
+    <string name="title_activity_login">ActivityLogin</string>
+    <string name="title_activity_register">ActivityRegister</string>
+    <string name="title_activity_publish">ActivityPublish</string>
+    <string name="no_result">对不起，没有搜索到相关数据！</string>
+</resources>
