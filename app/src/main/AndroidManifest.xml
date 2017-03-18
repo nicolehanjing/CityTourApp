@@ -71,6 +71,7 @@
         <activity android:name=".ui.ActivityDetail" />
         <activity android:name=".ui.PoiAroundSearchActivity" />
         <activity android:name=".ui.ActivityFood"></activity>
+        <activity android:name="com.example.hanjing.citytourapp.ui.ChooseAreaActivity" />
     </application>
 
 </manifest>

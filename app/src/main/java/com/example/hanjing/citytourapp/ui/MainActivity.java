@@ -261,7 +261,7 @@ public class MainActivity extends Activity implements OnClickListener, AMapLocat
         }
 
         else if (v == travel){
-            intent = new Intent(MainActivity.this,ActivityFood.class);
+            intent = new Intent(MainActivity.this,ChooseAreaActivity.class);
             startActivity(intent);
 
             //通知
