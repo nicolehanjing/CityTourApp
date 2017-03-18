@@ -73,6 +73,11 @@
         <activity android:name=".ui.ActivityFood"></activity>
         <activity android:name="com.example.hanjing.citytourapp.ui.ChooseAreaActivity" />
         <activity android:name=".ui.WeatherActivity" />
+
+
+        <!-- 后台智能更新 -->
+        <service android:name="com.example.hanjing.citytourapp.service.AutoUpdateService"></service>
+        <receiver android:name="com.example.hanjing.citytourapp.service.AutoUpdateReceiver"></receiver>
     </application>
 
 </manifest>

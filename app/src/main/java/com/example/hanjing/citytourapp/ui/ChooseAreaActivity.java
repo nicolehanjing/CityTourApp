@@ -38,6 +38,13 @@ public class ChooseAreaActivity extends Activity {
     public static final int LEVEL_CITY = 1;
     public static final int LEVEL_COUNTY = 2;
 
+
+    //是否从WeatherActivity中跳转过来
+    private boolean isFromWeatherActivity;
+    //是否从MainActivity中跳转过来
+    private boolean isFromMainActivity;
+
+
     private ProgressDialog progressDialog;
     private TextView titleText;
     private ListView listView;
@@ -73,12 +80,18 @@ public class ChooseAreaActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isFromWeatherActivity = getIntent().getBooleanExtra("from_weather_activity", false);
+        isFromMainActivity = getIntent().getBooleanExtra("from_main_activity", false);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // 已经选择了城市且不是从WeatherActivity跳转过来，才会直接跳转到 WeatherActivity
         if (prefs.getBoolean("city_selected", false)) {
-            Intent intent = new Intent(this, WeatherActivity.class);
-            startActivity(intent);
-            finish();
-            return;
+            if (isFromWeatherActivity = false) {
+                Intent intent = new Intent(this, WeatherActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
         }
 
 
@@ -191,8 +204,7 @@ public class ChooseAreaActivity extends Activity {
             if ("province".equals(type)) {
                 result = Utility.handleProvincesResponse(WeatherDB, response);
             } else if ("city".equals(type)) {
-                result = Utility.handleCitiesResponse(WeatherDB,
-                        response, selectedProvince.getId());
+                result = Utility.handleCitiesResponse(WeatherDB, response, selectedProvince.getId());
             } else if ("country".equals(type)) {
                 result = Utility.handleCountiesResponse(WeatherDB, response, selectedCity.getId());
             }
@@ -206,7 +218,7 @@ public class ChooseAreaActivity extends Activity {
                         queryProvinces();
                     } else if ("city".equals(type)) {
                         queryCities();
-                    } else if ("country".equals(type)) {
+                    } else if ("county".equals(type)) {
                         queryCounties();
                     }
                 } });
@@ -253,6 +265,10 @@ public class ChooseAreaActivity extends Activity {
             } else if (currentLevel == LEVEL_CITY) {
                 queryProvinces();
             } else {
+                if (isFromWeatherActivity) {
+                    Intent intent = new Intent(this, WeatherActivity.class);
+                    startActivity(intent);
+                }
                 finish();
             }
 
