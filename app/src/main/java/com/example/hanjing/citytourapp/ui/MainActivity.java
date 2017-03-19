@@ -261,8 +261,8 @@ public class MainActivity extends Activity implements OnClickListener, AMapLocat
         }
 
         else if (v == travel){
-            intent = new Intent(MainActivity.this,ChooseAreaActivity.class);
-            intent.putExtra("from_main_activity", true);
+            intent = new Intent(MainActivity.this,ActivityTravel.class);
+            //intent.putExtra("from_main_activity", true);
             startActivity(intent);
 
             //通知
@@ -398,7 +398,7 @@ public class MainActivity extends Activity implements OnClickListener, AMapLocat
         markerOptions.snippet("Welcome to Beijing!");
         //设置图标
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
-                .decodeResource(getResources(), R.drawable.location_logo))).draggable(true).period(50);
+                .decodeResource(getResources(), R.drawable.location))).draggable(true).period(50);
         //标记位置
         curMarker = aMap.addMarker(markerOptions);
 

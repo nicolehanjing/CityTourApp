@@ -83,13 +83,13 @@ public class ActivityRegister extends Activity implements OnClickListener {
             String username = register_name.getText().toString();
             String pwd = register_password.getText().toString();
             String phone = register_phone.getText().toString();
-            //int role = riderRadio.isChecked()? 0 :1;//0 rider 1 driver
+            int type = riderRadio.isChecked()? 0 :1;//0 rider 1 driver
 
             String result = query(username,pwd,phone,type);
             return result;
         }
 
-        //此方法会在后台任务执行前被调用，用于进行一些准备工作
+        //此方法会在后台任务执行后被调用
         @Override
         protected void onPostExecute(String result) {
 
@@ -106,7 +106,7 @@ public class ActivityRegister extends Activity implements OnClickListener {
 
 
             } else if (result != null && result.equals("2")){
-                showDialog("此手机号已经注册过了。");
+                showDialog("此手机号已经注册过了");
             }else {
                 showDialog("注册失败，请稍后重试");
             }

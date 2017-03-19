@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="-"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:background="@drawable/button_selector"/>
@@ -210,12 +210,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="40dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="12dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:gravity="center_vertical"
                 android:text="Cost：unknown"
-                android:textSize="10sp"
-                />
+                android:textSize="13sp" />
 
         </LinearLayout>
 
@@ -235,7 +234,7 @@
                 android:textColor="@color/white"
                 android:layout_marginRight="5dp"
                 android:layout_gravity="center"
-                android:text="添加目的" />
+                android:text="Add Destination" />
             <Button
                 android:id="@+id/clear_end_bt"
                 android:layout_width="100dp"
@@ -244,7 +243,7 @@
                 android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:layout_marginRight="5dp"
-                android:text="清空目的" />
+                android:text="Clear Destination" />
 
             <Button
                 android:id="@+id/submit"
@@ -253,7 +252,7 @@
                 android:background="@drawable/acceptrequest_button"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
-                android:text="提交" />
+                android:text="Submit" />
         </LinearLayout>
 
     </LinearLayout>

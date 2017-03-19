@@ -2,18 +2,13 @@ package com.example.hanjing.citytourapp.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -47,9 +42,6 @@ import com.amap.api.services.poisearch.PoiSearch.OnPoiSearchListener;
 import com.amap.api.services.poisearch.PoiSearch.SearchBound;
 import com.example.hanjing.citytourapp.R;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,12 +79,8 @@ public class PoiAroundSearchActivity extends Activity implements OnClickListener
 	private RelativeLayout mPoiDetail;
 	private TextView mPoiName, mPoiAddress;
 	private String keyWord = "";
-	private ImageView camera_btn, take_picture;
 	private EditText mSearchText;
 
-	private Uri imageUri;
-	public static final int TAKE_PHOTO = 1;
-	public static final int CROP_PHOTO = 2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +88,7 @@ public class PoiAroundSearchActivity extends Activity implements OnClickListener
 		setContentView(R.layout.poiaroundsearch_activity);
 		mapview = (MapView)findViewById(R.id.mapView);
 		compassImg = (ImageView) findViewById(R.id.compass_img);//指南针
-		camera_btn = (ImageView)findViewById(R.id.camera);
-		take_picture = (ImageView)findViewById(R.id.take_picture);
+
 		mapview.onCreate(savedInstanceState);
 		double  lat = getIntent().getDoubleExtra("lat", 0);
 		double  lon = getIntent().getDoubleExtra("lon", 0);
@@ -127,7 +114,6 @@ public class PoiAroundSearchActivity extends Activity implements OnClickListener
 		if (mAMap == null) {
 			mAMap = mapview.getMap();
 			mAMap.setOnMapClickListener(this);
-			camera_btn.setOnClickListener(this);
 			mAMap.setOnMarkerClickListener(this);
 			mAMap.setOnInfoWindowClickListener(this);
 			mAMap.setInfoWindowAdapter(this);
@@ -368,26 +354,6 @@ public class PoiAroundSearchActivity extends Activity implements OnClickListener
 				doSearchQuery();
 				break;
 
-			//拍照
-			case R.id.camera:
-				// 创建File对象，用于存储拍照后的图片
-				File outputImage = new File(Environment.
-						getExternalStorageDirectory(), "tempImage.jpg");
-				try {
-					if (outputImage.exists()) {
-						outputImage.delete();
-					}
-					outputImage.createNewFile();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
-				imageUri = Uri.fromFile(outputImage);
-				Intent intent = new Intent("android.media.action. IMAGE_CAPTURE");
-				intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-				startActivityForResult(intent, TAKE_PHOTO); // 启动相机程序
-
-				break;
 
 			default:
 				break;
@@ -395,34 +361,7 @@ public class PoiAroundSearchActivity extends Activity implements OnClickListener
 		}
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch (requestCode) {
-			case TAKE_PHOTO:
-				if (resultCode == RESULT_OK) {
-					Intent intent = new Intent("com.android.camera.action.CROP");
-					intent.setDataAndType(imageUri, "image/*");
-					intent.putExtra("scale", true);
-					intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-					startActivityForResult(intent, CROP_PHOTO); // 启动裁剪程序
-				}
-				break;
 
-			case CROP_PHOTO:
-				if (resultCode == RESULT_OK) {
-					try {
-						Bitmap bitmap = BitmapFactory.decodeStream
-								(getContentResolver().openInputStream(imageUri));
-						take_picture.setImageBitmap(bitmap); // 将裁剪后的照片显示出来
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					} }
-				break;
-			default:
-				break;
-		}
-	}
-	
 	private int[] markers = {
 			R.drawable.poi_marker_1,
 			R.drawable.poi_marker_2,
