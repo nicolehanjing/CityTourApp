@@ -1,0 +1,90 @@
+/**
+*我选择这段代码是因为这是我独立开发的安卓项目（城市旅行）中的一个额外功能，一个比较经典的rack字母小游戏，这只是其中一个重要的class。
+*首先这是第一个我自己完全独立开发的app，这个项目不但是我一直感兴趣的主题（旅游电商），也是一个锻炼了我全栈开发能力的项目。我不但学习了前端开发，
+*也巩固了后端开发的知识。我学到了很多，同时也坚定了我从电商专业走向cs的道路。
+*这个额外功能可以使得用户多一些娱乐选择，以便打发车子到来的等待时间。这不但是出于我开发的兴趣，也是我第一次开发一个小游戏，对当时的我来说算是一个新的开始。
+*/
+
+public class Rack {
+
+	// instance variables: rack input
+	final private String input;
+    
+    // constructor
+	public Rack(String rack) {
+		input = rack;
+	}
+
+   /**
+    * Finds all subsets of the multiset starting at position k in unique and mult.
+    * unique and mult describe a multiset such that mult[i] is the multiplicity of the char
+    *      unique.charAt(i).
+    * PRE: mult.length must be at least as big as unique.length()
+    *      0 <= k <= unique.length()
+    * @param unique a string of unique letters
+    * @param mult the multiplicity of each letter from unique.  
+    * @param k the smallest index of unique and mult to consider.
+    * @return all subsets of the indicated multiset
+    */
+   private static ArrayList<String> allSubsets(String unique, int[] mult, int k) {
+      ArrayList<String> allCombos = new ArrayList<>();
+      
+      if (k == unique.length()) {  // multiset is empty
+         allCombos.add("");
+         return allCombos;
+      }
+      
+      // get all subsets of the multiset without the first unique char
+      ArrayList<String> restCombos = allSubsets(unique, mult, k+1);
+      
+      // prepend all possible numbers of the first char (i.e., the one at position k) 
+      // to the front of each string in restCombos.  Suppose that char is 'a'...
+      
+      String firstPart = "";          // in outer loop firstPart takes on the values: "", "a", "aa", ...
+      for (int n = 0; n <= mult[k]; n++) {   
+         for (int i = 0; i < restCombos.size(); i++) {  // for each of the subsets 
+                                                        // we found in the recursive call
+            // create and add a new string with n 'a's in front of that subset
+            allCombos.add(firstPart + restCombos.get(i));  
+         }
+         firstPart += unique.charAt(k);  // append another instance of 'a' to the first part
+      }
+      
+      return allCombos;
+   }
+   
+   /**
+    * get all subsets of the rack
+    * @return ArrayList<String>  subsets
+    */
+   public ArrayList<String> getSubset() {
+	    // create the frequency map of each character
+	    Map<Character, Integer> frequency = new HashMap<>();
+	    for (char c : input.toCharArray()) {
+	    	if (frequency.containsKey(c)) {
+	    		frequency.put(c, frequency.get(c) + 1);
+	    	}
+	    	else {
+	    		frequency.put(c, 1);
+	    	}
+	    }
+	    
+	    // unique letters in the rack. e.g. 'abc' in rack 'aabbbbcc'
+	    String unique = "";
+	    for (char ch : frequency.keySet()) {
+	    	unique += ch;
+	    }
+	    
+	    // corresponding frequency of unique letters
+	    int[] mult = new int[frequency.size()];
+	    int index = 0;
+	    for (char c : frequency.keySet()) {
+	    	mult[index++] = frequency.get(c);
+	    }   
+	    
+	    ArrayList<String> subsets = allSubsets(unique, mult, 0);
+	    subsets.remove(0); // an empty one at the beginning should be removed
+	    return new ArrayList<String>(subsets);
+   }
+
+}
